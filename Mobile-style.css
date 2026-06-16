@@ -1,0 +1,414 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Mobile Container to mimic the phone layout */
+        .phone-container {
+            width: 390px;
+            height: 844px;
+            background-color: #f7f7f6; /* Warm linen tone from background */
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 8px solid #1a1a1a;
+        }
+
+        /* Scrollable Area inside the phone */
+        .app-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 16px 90px 16px; /* Extra bottom padding for floating nav */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Hide scrollbar for a clean app feel */
+        .app-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ==========================================
+           2. TOP STATUS & UTILITY BAR
+           ========================================== */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px 6px 24px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .utility-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8px;
+        }
+
+        .menu-toggle {
+            font-size: 1.5rem;
+            cursor: pointer;
+            Align-self: center;
+            align-items: center;
+        }
+
+        .utility-actions {
+            display: flex;
+            gap: 12px;
+            font-size: 1.2rem;
+            align-items: center;
+        }
+
+        .search-icon {
+            font-size: 1rem;
+        }
+
+        /* ==========================================
+           3. CALENDAR CARD
+           ========================================== */
+        .calendar-card {
+            background-color: #EFE9D5;
+            border-radius: 20px;
+            padding: 14px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .month-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .cal-arrows {
+            display: flex;
+            gap: 6px;
+        }
+
+        .arrow-btn {
+            background-color: #88C496;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            text-align: center;
+        }
+
+        .day-name {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #4E6E58;
+            padding: 4px 0;
+            border-radius: 10px;
+        }
+        .day-name.active-day {
+            background-color: #88C496;
+            color: white;
+        }
+
+        .day-number {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 0;
+            color: #333;
+            position: relative;
+        }
+
+        .day-number.has-event::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background-color: #D32F2F;
+            border-radius: 50%;
+        }
+
+        /* ==========================================
+           4. SECTION GLOBAL TITLES
+           ========================================== */
+        .section-box h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .add-btn-icon {
+            font-size: 1.4rem;
+            cursor: pointer;
+            font-weight: 400;
+        }
+
+        /* ==========================================
+           5. MY COMMUNITY SQUARES
+           ========================================== */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .comm-card {
+            border-radius: 12px;
+            padding: 10px 4px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .comm-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .comm-card p {
+            font-size: 0.65rem;
+            font-weight: 700;
+        }
+
+        /* App colors matching the screenshot exactly */
+        .bg-purple { background-color: #A3B9EC; color: #1E3A8A; }
+        .bg-yellow { background-color: #FFF275; color: #746200; }
+        .bg-mint   { background-color: #66FFA6; color: #00662F; }
+        .bg-coral  { background-color: #FF7081; color: white; }
+
+        /* ==========================================
+           6. MY GROUPS CHIPS
+           ========================================== */
+        .groups-row {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+        .groups-row::-webkit-scrollbar { display: none; }
+
+        .group-pill {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            min-width: 110px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .pill-add {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid currentColor;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        .pill-green { background-color: #76FF7A; color: #054208; }
+        .pill-pink  { background-color: #FBB4D1; color: #5C0627; }
+        .pill-orange { background-color: #E2975D; color: #4E2200; }
+
+        /* ==========================================
+           7. MY TASKS CARDS
+           ========================================== */
+        .tasks-row {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+        .tasks-row::-webkit-scrollbar { display: none; }
+
+        .task-card {
+            width: 105px;
+            height: 65px;
+            border-radius: 8px;
+            padding: 6px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .task-tag {
+            font-size: 0.55rem;
+            font-weight: 800;
+            text-align: center;
+            padding: 2px 0;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .tag-darkgreen { background-color: #2E6B33; color: white; }
+        .tag-yellow    { background-color: #D6C200; color: black; }
+        .tag-red       { background-color: #CC2B2B; color: white; }
+
+        .task-card.card-leaf { background-color: #8ED477; }
+        .task-card.card-lime { background-color: #A3D944; }
+        .task-card.card-green { background-color: #5CB85C; }
+
+        .task-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .task-line {
+            height: 3px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+            width: 100%;
+        }
+        .task-line.short { width: 60%; }
+
+        /* Calendar Widget Floating Element */
+        .floating-cal-widget {
+            width: 45px;
+            height: 45px;
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+            flex-shrink: 0;
+        }
+        .floating-cal-widget .dots {
+            font-size: 0.6rem;
+            color: #666;
+            line-height: 1;
+        }
+        .floating-cal-widget .plus-badge {
+            position: absolute;
+            bottom: -4px;
+            right: -4px;
+            background-color: #4CAF50;
+            color: white;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* ==========================================
+           8. ALL COMMUNITY EVENTS IMAGES
+           ========================================== */
+        .events-gallery {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+        .events-gallery::-webkit-scrollbar { display: none; }
+
+        .event-img-frame {
+            width: 120px;
+            height: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background-color: #ccc;
+            border: 2px solid #fff;
+        }
+
+        .event-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ==========================================
+           9. BOTTOM NAVIGATION SYSTEM
+           ========================================== */
+        .bottom-nav {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            right: 16px;
+            background-color: #3cd25f; /* Lime Green Navigation base */
+            height: 56px;
+            border-radius: 25px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .nav-icon-btn {
+            font-size: 1.3rem;
+            color: #1A3E26;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .nav-icon-btn.active-nav {
+            background-color: #F3EFE0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
